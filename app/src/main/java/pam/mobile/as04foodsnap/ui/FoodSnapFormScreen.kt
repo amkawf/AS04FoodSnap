@@ -1,4 +1,3 @@
-// FoodSnapFormScreen.kt
 package pam.mobile.as04foodsnap.ui
 
 import androidx.compose.foundation.layout.*
@@ -7,7 +6,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.foodsnapform.viewmodel.FoodSnapViewModel
+import pam.mobile.as04foodsnap.viewmodel.FoodSnapViewModel
 
 @Composable
 fun FoodSnapFormScreen(viewModel: FoodSnapViewModel = viewModel()) {
@@ -19,7 +18,7 @@ fun FoodSnapFormScreen(viewModel: FoodSnapViewModel = viewModel()) {
             .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Text("FoodSnap Form", style = MaterialTheme.typography.titleLarge)
+        Text("Form Data Makanan", style = MaterialTheme.typography.titleLarge)
 
         OutlinedTextField(
             value = uiState.firstName,
@@ -45,7 +44,7 @@ fun FoodSnapFormScreen(viewModel: FoodSnapViewModel = viewModel()) {
         OutlinedTextField(
             value = uiState.calories,
             onValueChange = { viewModel.updateCalories(it) },
-            label = { Text("Kalori") },
+            label = { Text("Kalori (kcal)") },
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -56,12 +55,17 @@ fun FoodSnapFormScreen(viewModel: FoodSnapViewModel = viewModel()) {
             Text("Submit")
         }
 
+        // Menampilkan error validasi
         if (uiState.errorMessage.isNotEmpty()) {
-            Text(uiState.errorMessage, color = MaterialTheme.colorScheme.error)
+            Text(
+                text = uiState.errorMessage,
+                color = MaterialTheme.colorScheme.error
+            )
         }
 
+        // Menampilkan hasil gabungan data
         if (uiState.resultText.isNotEmpty()) {
-            Text(uiState.resultText)
+            Text(text = uiState.resultText)
         }
     }
 }
