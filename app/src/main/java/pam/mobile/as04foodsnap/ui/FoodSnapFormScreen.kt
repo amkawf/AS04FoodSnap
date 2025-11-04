@@ -8,7 +8,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import pam.mobile.as04foodsnap.viewmodel.FoodSnapViewModel
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 
 
